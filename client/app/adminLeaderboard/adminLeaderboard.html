@@ -1,0 +1,39 @@
+<navbar></navbar>
+<div class="container">
+	<div class="col-xs-12">
+		<h3>Admin Leaderboard ({{ totalRegistrations }} registrations so far)</h3>
+
+    <button class="btn btn-link" ng-click="exportToExcel('#adminLeaderboardTable')">
+      <span class="glyphicon glyphicon-share"></span> Export to Excel
+    </button>
+
+		<table class="table table-bordered table-hover" id="adminLeaderboardTable">
+			<thead>
+				<tr>
+					<th>Position</th>
+					<th>Name</th>
+					<th>Email</th>					
+					<th>Phone</th>					
+					<th>Solved questions</th>
+					<th>Time</th>
+					<th>Allow to play</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="user in users track by $index" ng-class="{'success': $index<3}">
+					<td>{{ $index+1 }}</td>
+					<td>{{ user.name }}</td>
+					<td>{{ user.email }}</td>
+					<td>{{ user.phoneNumber }}</td>
+					<td>{{ user.numSolved }}</td>
+					<td>{{ user.lastSolvedAt | date: 'medium' }}</td>
+					<td>
+						<button class="btn btn-sm btn-danger" ng-if="user.disqualified" ng-click="toggleQualification(user._id, $index)">Undo</button>
+						<button class="btn btn-sm btn-warning" ng-if="!user.disqualified" ng-click="toggleQualification(user._id, $index)">Disqualify</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<footer></footer>

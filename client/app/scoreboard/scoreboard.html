@@ -1,0 +1,55 @@
+<navbar></navbar>
+<div class="container">
+	<div class="col-xs-6">
+		<h3><b>Leaderboard (Top 20)</b></h3>
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Position</th>
+					<th>Name</th>
+					<th>Solved questions</th>
+					<th>Time</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="user in users track by $index" ng-class="{'success': $index<3}">
+					<td>{{ $index+1 }}</td>
+					<td>{{ user.name }}</td>
+					<td>{{ user.numSolved }}</td>
+					<td>{{ user.lastSolvedAt | date: 'medium' }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div ng-if="loggedIn" class="col-xs-6">
+		<div ng-if="!currUser.disqualified">
+			<h3><b>Your Position</b></h3>
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Position</th>
+						<th>Name</th>
+						<th>Solved questions</th>
+						<th>Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-class="{'success': currUserPosition<=3}">
+						<td>{{ currUserPosition }}</td>
+						<td>{{ currUser.name }}</td>
+						<td>{{ currUser.numSolved }}</td>
+						<td>{{ currUser.lastSolvedAt | date: 'medium' }}</td>
+					</tr>
+				</tbody>
+			</table>		
+		</div>
+		<div ng-if="currUser.disqualified">
+			<h3 class="text-danger"><b>You are disqualified</b></h3>
+			<div class="alert alert-danger">
+				<p class="text-center"><b>You have been disqualified by the admin due to your unfair activities!</b></p>
+				<p class="text-center">Please contact <a href="mailto:tidbits@shaastra.org">tidbits@shaastra.org</a> for further details.</p>
+			</div>
+		</div>
+	</div>
+</div>
+<footer></footer>
