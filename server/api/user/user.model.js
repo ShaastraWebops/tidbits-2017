@@ -17,6 +17,8 @@ var UserSchema = new Schema({
   password: String,
   provider: String,
   solved: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  solved2: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  solved3: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
   disqualified: { type: Boolean, default: false },
   lastSolvedAt: { type: Date },
   phoneNumber: { type: String, default: '' },

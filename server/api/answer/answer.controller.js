@@ -57,6 +57,74 @@ exports.verify = function(req, res) {
         }
       }
       else {
+        Question.update({_id: req.params.id },
+         {$push: { 'wrongAttempts' : req.body.answer }},{upsert:true}, function(err, data) { 
+            res.send(202);
+         });
+        
+      }
+    });
+  });
+};
+
+exports.verify2 = function(req, res) {
+  User.findById(req.user._id, function (err, user) {
+    Question.findById(req.params.id, function (err, q) {
+      q.answer = q.answer.toLowerCase();
+      req.body.answer = req.body.answer.toLowerCase();
+      var answers = q.answer.split(',');
+      console.log(answers);
+      // if(q.answer.toLowerCase()==req.body.answer.toLowerCase()) {
+      if(!user.disqualified && answers.indexOf(req.body.answer) >= 0) {
+        if(user.solved.indexOf(req.params.id)==-1) {
+          var updated = _.assign(user, {solved2: user.solved2.concat(req.params.id), numSolved: user.numSolved+1});
+          updated.lastSolvedAt = Date.now();
+          updated.save(function (err) {
+            if (err) { return handleError(res, err); }
+            return;
+          });
+          console.log(updated);
+          //saveUpdates(user);
+          //var updated=_.extend(user, {solved: temp});
+          res.send(200);
+        }
+        else {
+          res.send(201);
+        }
+      }
+      else {
+        res.send(202);
+      }
+    });
+  });
+};
+
+exports.verify3 = function(req, res) {
+  User.findById(req.user._id, function (err, user) {
+    Question.findById(req.params.id, function (err, q) {
+      q.answer = q.answer.toLowerCase();
+      req.body.answer = req.body.answer.toLowerCase();
+      var answers = q.answer.split(',');
+      console.log(answers);
+      // if(q.answer.toLowerCase()==req.body.answer.toLowerCase()) {
+      if(!user.disqualified && answers.indexOf(req.body.answer) >= 0) {
+        if(user.solved.indexOf(req.params.id)==-1) {
+          var updated = _.assign(user, {solved3: user.solved3.concat(req.params.id), numSolved: user.numSolved+1});
+          updated.lastSolvedAt = Date.now();
+          updated.save(function (err) {
+            if (err) { return handleError(res, err); }
+            return;
+          });
+          console.log(updated);
+          //saveUpdates(user);
+          //var updated=_.extend(user, {solved: temp});
+          res.send(200);
+        }
+        else {
+          res.send(201);
+        }
+      }
+      else {
         res.send(202);
       }
     });

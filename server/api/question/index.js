@@ -8,6 +8,8 @@ var router = express.Router();
 
 router.get('/', auth.hasRole('admin'), controller.index);
 router.get('/next/', auth.isAuthenticated(), controller.nextQ);
+router.get('/next2/', auth.isAuthenticated(), controller.next2Q);
+router.get('/next3/', auth.isAuthenticated(), controller.next3Q);
 router.post('/', auth.hasRole('admin'), controller.create);
 router.put('/:id', auth.hasRole('admin'), controller.update);
 router.patch('/:id', auth.hasRole('admin'), controller.update);

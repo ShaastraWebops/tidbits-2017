@@ -176,3 +176,67 @@ exports.nextQ = function(req, gres) {
     } 
   });
 };
+
+exports.next2Q = function(req, gres) {
+  User.findById(req.user._id).populate('solved2', 'next').then(function (res) {
+    if(!res.disqualified) {
+      if(res.solved2.length==0) {
+        Question.find({}, '-answer')
+          .sort({_id: 1})
+          .then(function (actres) {
+            if(actres.length != 0) {
+              if(!actres[0].displayHints) {
+                actres[0].hints = '';
+              }
+            }
+            gres.status(200).send(actres[3]);
+        });
+      } else {
+        Question.findById(res.solved2[res.solved2.length-1].next)
+          .select('-answer')
+          .then(function (actres) {
+            if(actres != null) {
+              if(!actres.displayHints) {
+                actres.hints = '';
+              }
+            }
+            gres.status(200).send(actres);
+          });
+      }
+    } else {
+      gres.status(200).send(null);
+    } 
+  });
+};
+
+exports.next3Q = function(req, gres) {
+  User.findById(req.user._id).populate('solved3', 'next').then(function (res) {
+    if(!res.disqualified) {
+      if(res.solved3.length==0) {
+        Question.find({}, '-answer')
+          .sort({_id: 1})
+          .then(function (actres) {
+            if(actres.length != 0) {
+              if(!actres[0].displayHints) {
+                actres[0].hints = '';
+              }
+            }
+            gres.status(200).send(actres[6]);
+        });
+      } else {
+        Question.findById(res.solved3[res.solved3.length-1].next)
+          .select('-answer')
+          .then(function (actres) {
+            if(actres != null) {
+              if(!actres.displayHints) {
+                actres.hints = '';
+              }
+            }
+            gres.status(200).send(actres);
+          });
+      }
+    } else {
+      gres.status(200).send(null);
+    } 
+  });
+};

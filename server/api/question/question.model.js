@@ -9,7 +9,8 @@ var QuestionSchema = new Schema({
   visible: { type: Boolean, default: true },
   hints: { type: String, default: '' },
   displayHints: { type: Boolean, default: false },
-  next: { type: Schema.Types.ObjectId, ref: 'Question', default: null }
+  next: { type: Schema.Types.ObjectId, ref: 'Question', default: null },
+  wrongAttempts: [{ type: String }]
 });
 
 module.exports = mongoose.model('Question', QuestionSchema);

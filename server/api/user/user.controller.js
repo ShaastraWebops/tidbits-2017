@@ -115,7 +115,7 @@ exports.me = function(req, res, next) {
   var userId = req.user._id;
 
   User.findById(userId, '-salt -password')
-    .populate('solved', '_id question answer')
+    .populate('solved solved2 solved3', '_id question answer')
     .exec(function(err, user) { // don't ever give out the password or salt
       if (!user) {
         return res.status(401).end();
