@@ -189,7 +189,7 @@ exports.next2Q = function(req, gres) {
                 actres[0].hints = '';
               }
             }
-            gres.status(200).send(actres[3]);
+            gres.status(200).send(actres[9]);
         });
       } else {
         Question.findById(res.solved2[res.solved2.length-1].next)
@@ -221,7 +221,7 @@ exports.next3Q = function(req, gres) {
                 actres[0].hints = '';
               }
             }
-            gres.status(200).send(actres[6]);
+            gres.status(200).send(actres[17]);
         });
       } else {
         Question.findById(res.solved3[res.solved3.length-1].next)
