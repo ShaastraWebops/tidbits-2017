@@ -21,9 +21,6 @@ var all = {
   // Server port
   port: process.env.PORT || 9000,
 
-  // Server IP
-  ip: process.env.IP || '0.0.0.0',
-
   // Should we populate the DB with sample data?
   seedDB: false,
 
@@ -50,4 +47,4 @@ var all = {
 var processRequire = process.env.NODE_ENV != undefined ? require('./' + process.env.NODE_ENV + '.js') : {};
 module.exports = _.merge(
   all,
-  processRequire);
+  require('./production.js') || {});

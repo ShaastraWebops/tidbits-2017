@@ -7,16 +7,6 @@ module.exports = {
   mongo: {
     uri: 'mongodb://localhost/tidbits-dev'
   },
-  sequelize: {
-    uri: 'sqlite://',
-    options: {
-      logging: false,
-      storage: 'dev.sqlite',
-      define: {
-        timestamps: false
-      }
-    }
-  },
 
   seedDB: true
 };
