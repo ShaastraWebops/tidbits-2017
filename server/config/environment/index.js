@@ -19,7 +19,10 @@ var all = {
   root: path.normalize(__dirname + '/../../..'),
 
   // Server port
-  port: 8002,
+  port: process.env.PORT || 9000,
+
+  // Server IP
+  ip: process.env.IP || '0.0.0.0',
 
   // Should we populate the DB with sample data?
   seedDB: false,
@@ -44,6 +47,7 @@ var all = {
 
 // Export the config object based on the NODE_ENV
 // ==============================================
+var processRequire = process.env.NODE_ENV != undefined ? require('./' + process.env.NODE_ENV + '.js') : {};
 module.exports = _.merge(
   all,
-  require('./' + process.env.NODE_ENV + '.js') || {});
+  processRequire);

@@ -495,6 +495,7 @@ module.exports = function (grunt) {
       server: {
         options: {
           optional: ['runtime']
+           // presets: ['es2015']
         },
         files: [{
           expand: true,
