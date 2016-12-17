@@ -42,7 +42,6 @@
 		<a href="" class="list-group-item" ng-repeat="question in solvedQuestions track by $index">
     	<h4 class="list-group-item-heading"><u><b>Question - {{ $index+1 }}</b></u></h4>
     	<p><span v-html="input | marked" ng-bind-html="xmark(question.question)"></span></p>
-    	<h4 class="list-group-item-heading"><u><b>Answer - {{ $index+1 }}</b></u></h4>{{question.answer}}
 		</a>
 	</div>
 
