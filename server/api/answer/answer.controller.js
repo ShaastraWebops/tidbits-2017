@@ -41,8 +41,9 @@ exports.verify = function(req, res) {
       // if(q.answer.toLowerCase()==req.body.answer.toLowerCase()) {
       if(!user.disqualified && answers.indexOf(req.body.answer) >= 0) {
         if(user.solved.indexOf(req.params.id)==-1) {
-          var updated = _.assign(user, {solved: user.solved.concat(req.params.id), numSolved: user.numSolved+1});
+          var updated = _.assign(user, {solved: user.solved.concat(req.params.id), numSolved: user.numSolved+1, numSolved1: user.numSolved1+1});
           updated.lastSolvedAt = Date.now();
+          updated.lastSolvedAt1 = Date.now();
           updated.save(function (err) {
             if (err) { return handleError(res, err); }
             return;
@@ -77,8 +78,9 @@ exports.verify2 = function(req, res) {
       // if(q.answer.toLowerCase()==req.body.answer.toLowerCase()) {
       if(!user.disqualified && answers.indexOf(req.body.answer) >= 0) {
         if(user.solved.indexOf(req.params.id)==-1) {
-          var updated = _.assign(user, {solved2: user.solved2.concat(req.params.id), numSolved: user.numSolved+1});
+          var updated = _.assign(user, {solved2: user.solved2.concat(req.params.id), numSolved: user.numSolved+1, numSolved2: user.numSolved2+1});
           updated.lastSolvedAt = Date.now();
+          updated.lastSolvedAt2 = Date.now();
           updated.save(function (err) {
             if (err) { return handleError(res, err); }
             return;
@@ -109,8 +111,9 @@ exports.verify3 = function(req, res) {
       // if(q.answer.toLowerCase()==req.body.answer.toLowerCase()) {
       if(!user.disqualified && answers.indexOf(req.body.answer) >= 0) {
         if(user.solved.indexOf(req.params.id)==-1) {
-          var updated = _.assign(user, {solved3: user.solved3.concat(req.params.id), numSolved: user.numSolved+1});
+          var updated = _.assign(user, {solved3: user.solved3.concat(req.params.id), numSolved: user.numSolved+1, numSolved3: user.numSolved3+1});
           updated.lastSolvedAt = Date.now();
+          updated.lastSolvedAt3 = Date.now();
           updated.save(function (err) {
             if (err) { return handleError(res, err); }
             return;

@@ -6,6 +6,18 @@ function ScoreboardController($scope, $http, Auth) {
   	$scope.users=res.data;
   });
 
+  $http.get('/api/users/leaders1/').then(function (res) {
+    $scope.users1=res.data;
+  });
+
+  $http.get('/api/users/leaders2/').then(function (res) {
+    $scope.users2=res.data;
+  });
+
+  $http.get('/api/users/leaders3/').then(function (res) {
+    $scope.users3=res.data;
+  });
+
   $scope.loggedIn = false;
   Auth.isLoggedIn(function (loggedIn) {
   	if(loggedIn) {

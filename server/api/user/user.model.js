@@ -21,8 +21,14 @@ var UserSchema = new Schema({
   solved3: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
   disqualified: { type: Boolean, default: false },
   lastSolvedAt: { type: Date },
+  lastSolvedAt1: { type: Date },
+  lastSolvedAt2: { type: Date },
+  lastSolvedAt3: { type: Date },
   phoneNumber: { type: String, default: '' },
   numSolved: { type: Number, default: 0 },
+  numSolved1: { type: Number, default: 0 },
+  numSolved2: { type: Number, default: 0 },
+  numSolved3: { type: Number, default: 0 },
   salt: String
 });
 

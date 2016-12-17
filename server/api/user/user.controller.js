@@ -141,11 +141,38 @@ exports.scoreboard = function(req, gres) {
   });
 };
 
+exports.scoreboard1 = function(req, gres) {
+  User.find({'role':'user', $or:[ { 'disqualified':{$exists: false} }, { 'disqualified':false } ]}, 'name _id numSolved1 lastSolvedAt1')
+  .sort({numSolved1: -1, lastSolvedAt1: 1})
+  .limit(20)
+  .exec(function (err, res) {
+    gres.status(200).send(res);
+  });
+};
+
+exports.scoreboard2 = function(req, gres) {
+  User.find({'role':'user', $or:[ { 'disqualified':{$exists: false} }, { 'disqualified':false } ]}, 'name _id numSolved2 lastSolvedAt2')
+  .sort({numSolved2: -1, lastSolvedAt2: 1})
+  .limit(20)
+  .exec(function (err, res) {
+    gres.status(200).send(res);
+  });
+};
+
+exports.scoreboard3 = function(req, gres) {
+  User.find({'role':'user', $or:[ { 'disqualified':{$exists: false} }, { 'disqualified':false } ]}, 'name _id numSolved3 lastSolvedAt3')
+  .sort({numSolved3: -1, lastSolvedAt3: 1})
+  .limit(20)
+  .exec(function (err, res) {
+    gres.status(200).send(res);
+  });
+};
+
 exports.adminScoreboard = function(req, gres) {
-  User.find({'role':'user', $or:[ { 'disqualified':{$exists: false} }, { 'disqualified':false } ]}, 'name _id numSolved lastSolvedAt email phoneNumber disqualified')
+  User.find({'role':'user', $or:[ { 'disqualified':{$exists: false} }, { 'disqualified':false } ]}, 'name _id numSolved numSolved1 numSolved2 numSolved3 lastSolvedAt email phoneNumber disqualified')
   .sort({numSolved: -1, lastSolvedAt: 1})
   .exec(function (err, res_one) {
-    User.find({'role':'user', 'disqualified':true }, 'name _id numSolved lastSolvedAt email phoneNumber disqualified')
+    User.find({'role':'user', 'disqualified':true }, 'name _id numSolved numSolved1 numSolved2 numSolved3 lastSolvedAt email phoneNumber disqualified')
     .sort({numSolved: -1, lastSolvedAt: 1})
     .exec(function (err, res_two) {
       var actres = res_one.concat(res_two);

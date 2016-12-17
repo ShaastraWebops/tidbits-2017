@@ -15,6 +15,9 @@
 					<th>Email</th>					
 					<th>Phone</th>					
 					<th>Solved questions</th>
+					<th>Part 1</th>
+					<th>Part 2</th>
+					<th>Part 3</th>
 					<th>Time</th>
 					<th>Allow to play</th>
 				</tr>
@@ -26,6 +29,9 @@
 					<td>{{ user.email }}</td>
 					<td>{{ user.phoneNumber }}</td>
 					<td>{{ user.numSolved }}</td>
+					<td>{{ user.numSolved1 }}</td>
+					<td>{{ user.numSolved2 }}</td>
+					<td>{{ user.numSolved3 }}</td>
 					<td>{{ user.lastSolvedAt | date: 'medium' }}</td>
 					<td>
 						<button class="btn btn-sm btn-danger" ng-if="user.disqualified" ng-click="toggleQualification(user._id, $index)">Undo</button>
