@@ -36,15 +36,11 @@
 		<h3>All questions solved in this part!</h3>
 	</div>
 
-	<!-- <a href="/solve"><button class="btn btn-primary btn-sm btn-login" type="button">Go to part 1</button></a>
-	<a href="/04111996"><button class="btn btn-primary btn-sm btn-login" type="button">Go to part 2</button></a> -->
-
 	<h2><u><b>Solved Questions:</b></u></h2>
 	<div class="list-group">
 		<a href="" class="list-group-item" ng-repeat="question in solvedQuestions track by $index">
     	<h4 class="list-group-item-heading"><u><b>Question - {{ $index+1 }}</b></u></h4>
     	<p><span v-html="input | marked" ng-bind-html="xmark(question.question)"></span></p>
-    	<h4 class="list-group-item-heading"><u><b>Answer - {{ $index+1 }}</b></u></h4>{{question.answer}}
 		</a>
 	</div>
 
