@@ -45,9 +45,7 @@ angular.module('tidbitsApp')
 
     	  	}
     	  });
-          $scope.wrong = "";
-          $scope.correct = "";
-
+          
   	};
 
     $scope.showHintsCheck = false;
