@@ -30,7 +30,6 @@ angular.module('tidbitsApp')
     
   	$scope.subAns = function() {
 
-      $scope.answer="";
   	  $http.post('/api/answers/' + $scope.nextQuestionID, { answer: $scope.answer })
         .then(function (res) {
     	  	if(res.status == 200) {
@@ -42,8 +41,13 @@ angular.module('tidbitsApp')
     	  	else {
     	  	  $scope.wrong = "Wrong answer!";
     	  	  $scope.correct = "";
+            $scope.answer="";
+
     	  	}
     	  });
+          $scope.wrong = "";
+          $scope.correct = "";
+
   	};
 
     $scope.showHintsCheck = false;
