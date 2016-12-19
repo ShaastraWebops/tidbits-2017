@@ -29,6 +29,8 @@ angular.module('tidbitsApp')
     $scope.refresh();
     
   	$scope.subAns = function() {
+
+      $scope.answer="";
   	  $http.post('/api/answers/' + $scope.nextQuestionID, { answer: $scope.answer })
         .then(function (res) {
     	  	if(res.status == 200) {
